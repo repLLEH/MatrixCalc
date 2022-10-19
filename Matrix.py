@@ -60,18 +60,3 @@ class Matrix():
                         result.__matrix[i][j] += self.__matrix[i][q] * other.__matrix[q][j]
             return result
 
-
-
-A=Matrix(3,3)
-b=Matrix(2,3)
-c=Matrix(3,2)
-elements=[4,6,7,8,5,7,6,5,4]
-elements1=[4,6,7,8,5,7]
-A.createMatrix(elements)
-b.createMatrix(elements1)
-c.createMatrix(elements1)
-A.printMatrix()
-b.printMatrix()
-c.printMatrix()
-print(b*c)
-print(b*5)
