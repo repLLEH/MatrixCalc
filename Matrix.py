@@ -1,16 +1,16 @@
 class Matrix():
     def __init__(self,N,M):
-         self.N_size = N    # Number of rows in the matrix
-         self.M_size = M    # Number of cols in the matrix
+         self.__N_size = N    # Number of rows in the matrix
+         self.__M_size = M    # Number of cols in the matrix
          self.__matrix = []
 
 
     def createMatrix (self, args : list):   # take list [] of matrix elements
-        if(self.N_size * self.M_size == len(args)):
-            for i in range(self.N_size):
+        if(self.__N_size * self.__M_size == len(args)):
+            for i in range(self.__N_size):
                 self.__matrix.append([])
-                for j in range(self.M_size):
-                    self.__matrix[i].append(args[j+self.M_size*i])
+                for j in range(self.__M_size):
+                    self.__matrix[i].append(args[j+self.__M_size*i])
         else:
             print("the number of list items does not match the size of the matrix")
 
@@ -21,10 +21,10 @@ class Matrix():
         print("")
 
     def __add__(self, other):
-        result=Matrix(self.N_size,self.M_size)
-        for i in range(self.N_size):
+        result=Matrix(self.__N_size,self.__M_size)
+        for i in range(self.__N_size):
             result.__matrix.append([])
-            for j in range(self.M_size):
+            for j in range(self.__M_size):
                 result.__matrix[i].append(self.__matrix[i][j]+other.__matrix[i][j])
         return result
 
@@ -41,22 +41,22 @@ class Matrix():
 
     def __mul__(self, other):
         if(type(other) is int):
-            result = Matrix(self.N_size, self.M_size)
-            for rows in range(self.N_size):
+            result = Matrix(self.__N_size, self.__M_size)
+            for rows in range(self.__N_size):
                 result.__matrix.append([])
-                for cols in range(self.M_size):
+                for cols in range(self.__M_size):
                     result.__matrix[rows].append(self.__matrix[rows][cols]*other)
             return result
         else:
-            result = Matrix(self.N_size, other.M_size)
-            for rows in range(self.N_size):
+            result = Matrix(self.__N_size, other.__M_size)
+            for rows in range(self.__N_size):
                 result.__matrix.append([])
-                for cols in range(other.M_size):
+                for cols in range(other.__M_size):
                     result.__matrix[rows].append(0)
 
-            for i in range(self.N_size):
-                for j in range(other.M_size):
-                    for q in range(self.M_size):
+            for i in range(self.__N_size):
+                for j in range(other.__M_size):
+                    for q in range(self.__M_size):
                         result.__matrix[i][j] += self.__matrix[i][q] * other.__matrix[q][j]
             return result
 
